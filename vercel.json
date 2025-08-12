@@ -1,5 +1,5 @@
 {
   "version": 2,
-  "builds": [{ "src": "api/**/*.js", "use": "@vercel/node" }],
-  "routes": [{ "src": "/nominatim/(.*)", "dest": "/api/nominatim.js" }]
+  "builds": [{ "src": "api/nominatim.js", "use": "@vercel/node" }],
+  "routes": [{ "src": "/(.*)", "dest": "api/nominatim.js" }]
 }

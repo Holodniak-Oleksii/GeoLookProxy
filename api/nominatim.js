@@ -29,7 +29,7 @@ app.get("/nominatim/details", async (req, res) => {
   }
 });
 
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV === "development") {
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => console.log(`Local proxy running on port ${PORT}`));
 }
