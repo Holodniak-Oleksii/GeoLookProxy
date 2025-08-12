@@ -6,6 +6,9 @@ module.exports = async function handler(req, res) {
       "https://nominatim.openstreetmap.org/reverse",
       {
         params: req.query,
+        headers: {
+          "User-Agent": "GeoLookProxy/1.0 (your.email@example.com)",
+        },
       }
     );
     res.status(200).json(response.data);
