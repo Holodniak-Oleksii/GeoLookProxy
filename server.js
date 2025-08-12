@@ -1,9 +1,8 @@
 const axios = require("axios");
 const cors = require("cors");
 const express = require("express");
-const app = express();
-const port = process.env.PORT || 3000;
 
+const app = express();
 app.use(cors());
 
 app.get("/", (req, res) => {
@@ -33,7 +32,5 @@ app.get("/nominatim/details", async (req, res) => {
     res.status(500).json({ error: "Request failed" });
   }
 });
-
-app.listen(port, () => console.log(`Local proxy running on port ${port}`));
 
 module.exports = app;
