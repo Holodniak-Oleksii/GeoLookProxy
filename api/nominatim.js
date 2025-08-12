@@ -5,6 +5,10 @@ import express from "express";
 const app = express();
 app.use(cors());
 
+app.get("/", async (req, res) => {
+  res.send("Hello I am proxy");
+});
+
 app.get("/nominatim/reverse", async (req, res) => {
   try {
     const response = await axios.get(
@@ -29,9 +33,6 @@ app.get("/nominatim/details", async (req, res) => {
   }
 });
 
-if (process.env.NODE_ENV === "development") {
-  const PORT = process.env.PORT || 3000;
-  app.listen(PORT, () => console.log(`Local proxy running on port ${PORT}`));
-}
+app.listen(3000, () => console.log(`Local proxy running on port 3000`));
 
-export default app;
+module.exports = app;
