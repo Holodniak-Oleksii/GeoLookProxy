@@ -7,12 +7,12 @@ module.exports = async function handler(req, res) {
       {
         params: req.query,
         headers: {
-          "User-Agent": "GeoLookProxy/1.0 (your.email@example.com)",
+          "User-Agent": "GeoLookProxy/1.0 (olkakorolcuk@gmail.com)",
         },
       }
     );
     res.status(200).json(response.data);
   } catch (error) {
-    res.status(500).json({ error: "Request failed" });
+    res.status(500).json({ error: "Request failed", message: error });
   }
 };

@@ -13,6 +13,6 @@ module.exports = async function handler(req, res) {
     );
     res.status(200).json(response.data);
   } catch (error) {
-    res.status(500).json({ error: "Request failed" });
+    res.status(500).json({ error: "Request failed", message: error });
   }
 };
