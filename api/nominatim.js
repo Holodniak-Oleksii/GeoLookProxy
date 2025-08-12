@@ -9,9 +9,7 @@ app.get("/nominatim/reverse", async (req, res) => {
   try {
     const response = await axios.get(
       "https://nominatim.openstreetmap.org/reverse",
-      {
-        params: req.query,
-      }
+      { params: req.query }
     );
     res.json(response.data);
   } catch (error) {
@@ -23,9 +21,7 @@ app.get("/nominatim/details", async (req, res) => {
   try {
     const response = await axios.get(
       "https://nominatim.openstreetmap.org/details",
-      {
-        params: req.query,
-      }
+      { params: req.query }
     );
     res.json(response.data);
   } catch (error) {
@@ -33,4 +29,9 @@ app.get("/nominatim/details", async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log("Proxy running on port 3000"));
+if (process.env.NODE_ENV !== "production") {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => console.log(`Local proxy running on port ${PORT}`));
+}
+
+export default app;
